@@ -35,6 +35,11 @@ nRF52840 SoC
 ### Useful materials
 Making Embedded Systems O'Reilly
 
+### Links:
+- https://www.segger.com/downloads/jlink/
+- https://docs.nordicsemi.com/bundle/nrf-connect-vscode/page/index.html
+- https://www.nordicsemi.com/Products/Development-tools/nRF-Command-Line-Tools/Download?lang=en#infotabs
+
 ## Lab 2
 
 ## Lab 3
