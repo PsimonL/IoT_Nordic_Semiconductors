@@ -42,5 +42,27 @@ Making Embedded Systems O'Reilly
 
 ## Lab 2
 
+### Anatomy of an embedded application
+Read Input => Process => Send data  => Sleep => Receive data => Process => Write output => Sleep
+Read Input and Write output <-> Device drivers
+Send data and Receive data <-> Network stacks
+Sleep and Process <-> Application logic
+1. Super Loop Architecture - App logic is executed sequentially, blocking in any part will block whole, execution context must often go to main to ensure that all subsystems can execute
+2. Interrupt - https://en.wikipedia.org/wiki/Interrupt
+3. To solve those issues we need to implement Multithreaded Programming
+
+### Why to use RTOS
+- MUST BE PREDICTABLE - "All operations must verifiably complete within given time and resource constraints or else fail safe.":
+https://en.wikipedia.org/wiki/Real-time_operating_system
+Populart RTOS: FreeRTOS, ZephyrOS
+
+### Key features of Zephyr RTOS
+
+
+### Links:
+- https://eduinf.waw.pl/inf/prg/009_kurs_avr_old/0027.php
+
 ## Lab 3
+
+### Links:
 
