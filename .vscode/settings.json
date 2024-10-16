@@ -1,7 +1,8 @@
 {
     "WhiteSource Advise.Diff.BaseBranch": "main",
     "nrf-connect.applications": [
-        "${workspaceFolder}\\blinky"
+        "${workspaceFolder}\\blinky",
+        "${workspaceFolder}\\ncs-fund\\v2.x.x\\lesson2\\fund_less2_exer1"
     ],
-    "sonarlint.pathToCompileCommands": "${workspaceFolder}/blinky\\build\\compile_commands.json"
+    "sonarlint.pathToCompileCommands": "${workspaceFolder}/ncs-fund\\v2.x.x\\lesson2\\fund_less2_exer1\\build\\compile_commands.json"
 }

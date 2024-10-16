@@ -39,6 +39,7 @@ Making Embedded Systems O'Reilly
 - https://www.segger.com/downloads/jlink/
 - https://docs.nordicsemi.com/bundle/nrf-connect-vscode/page/index.html
 - https://www.nordicsemi.com/Products/Development-tools/nRF-Command-Line-Tools/Download?lang=en#infotabs
+- https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK/Download?lang=en#infotabs
 
 ## Lab 2
 
@@ -57,10 +58,21 @@ https://en.wikipedia.org/wiki/Real-time_operating_system
 Populart RTOS: FreeRTOS, ZephyrOS
 
 ### Key features of Zephyr RTOS
-
+- Kernel Services
+- Threads: execution context. Each thread has: stack, entry point funtion, priority and {...}. Thread creation can be in compile time (boosts system start time, ) but also at run time ().
+- Diagram of Thread life: New => Ready = (scheduler) > Suspended / Waiting  => Running => Terminated
+- Threads DO have priorities. Cooperative time slicing diagram -> Preemtive Time Slicing
+- TO READ: https://en.wikipedia.org/wiki/Priority_inversion
+- Synchronization primitives: semaphores, mutex (has it's own thread)
+Sekcje atomowe, locky, zmienne atomowe, semafory, mutex
+- Data Passing 
+- Device Tree and Device Driver Model
+- 
 
 ### Links:
+- https://www.nordicsemi.com/Products/Development-hardware/nRF52833-DK/Download?lang=en#infotabs
 - https://eduinf.waw.pl/inf/prg/009_kurs_avr_old/0027.php
+- https://eduinf.waw.pl/inf/prg/010_uc/0000.php
 
 ## Lab 3
 
