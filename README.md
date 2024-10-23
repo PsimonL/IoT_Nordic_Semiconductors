@@ -110,6 +110,26 @@ A bootloader typicalu validates checksum of the application image
 
 ### Dual bank (slot) DFU
 
+### Single bank (slot) DFU
+
+### Multi-stage bootloader
+First Stage
+
+Second Stage
+
+### Transport methods (to deliver app to device)
+- Simple Management Protocol (MPC) - UART, USB (CDC-ACM), BLE
+- Bluetooth Mesh
+- Zigbee
+- Matter - OTA DFU
+
+Firwaware over-the-air (FOTA / OTA)
+
+### Mcuboot and NSIB
+- Mcuboot: 
+- Nordi Secure Immutable Bootloader (NSIB): 
+
+### Links:
 
 ## Lab 4
 
