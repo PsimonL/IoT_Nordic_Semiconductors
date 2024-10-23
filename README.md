@@ -1,5 +1,6 @@
 # Internet of Things - Nordic Semiconductors
 
+
 1. Basics of embedded systems software (overview)
 2. Short range wireless protocols
 3. Nordic Semicondutor software and tools ecosystem
@@ -75,6 +76,44 @@ Sekcje atomowe, locky, zmienne atomowe, semafory, mutex
 - https://eduinf.waw.pl/inf/prg/010_uc/0000.php
 
 ## Lab 3
+
+### IoT Security Primer - Security aspcects in IoT
+- 3 filar system Threat Model: confidelity, authentication, integrity
+- System it is as strong as it's weakest point.
+
+Security threats - overview:
+1. Software attakcs (application, OS or protocol vulnerabilities attacks): DDoS, buffer overlow
+2. Non-invasive hardware attacks: physical measures corelated with 
+3. Invasive hardware attakcs: 
+
+### Threats to embedded systesms
+- Replay attack
+- Challenge reponse
+- Thrash-can attack
+
+### Quick
+- Hash functions
+- Message authenticetion code
+- Asymetric, Symetric encryption, Diffie Hellman Key Echange
+- Digital Signature, Public Key Infrastructure
+- Cryptographic Certifications
+
+### Bootloaders and DFU
+- What is bootloader and why wdo we need one?
+Bootloader is an application that runs before the main application.
+Two main functionalities: Replacing the application that is running in the device, ensudre validity and authencity of the application
+Its essential.
+
+### Firmware validation and authentication
+BitFlip!!!
+A bootloader typicalu validates checksum of the application image
+
+### Dual bank (slot) DFU
+
+
+## Lab 4
+
+## Lab 5
 
 ### Links:
 
