@@ -91,7 +91,7 @@ Security threats - overview:
 - Challenge reponse
 - Thrash-can attack
 
-### Quick
+### Quick recap on symmetric, asymetric cryptography, and PKI
 - Hash functions
 - Message authenticetion code
 - Asymetric, Symetric encryption, Diffie Hellman Key Echange
@@ -128,6 +128,8 @@ Firwaware over-the-air (FOTA / OTA)
 ### Mcuboot and NSIB
 - Mcuboot: 
 - Nordi Secure Immutable Bootloader (NSIB): 
+
+### ARM Platform Security Architecture
 
 ### Links:
 
