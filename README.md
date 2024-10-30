@@ -135,6 +135,41 @@ Firwaware over-the-air (FOTA / OTA)
 
 ## Lab 4
 
+### Wireless technologies
+Comparison table:  
+- Wi-Fi
+- Bluetooth Mesh
+- Bluetooth LE
+- Zigbee
+- Thread
+
+### We will start with IEEE 802.15.4 - characteristics:
+
+### 802.15.4 devices types
+- RFD
+- FFD
+
+### Two topologies
+- start
+- peer-to-peer
+
+### 802.15.4 PHY in general
+
+### Link quality indicator (LQI)
+
+### Clear channel assesment (CCA)
+
+### PPDU format (PHY protocol data unit)
+
+### MAC layer
+
+### Access to a medium
+
+### CSMA/CA
+
+### Links
+- https://en.wikipedia.org/wiki/Hidden_node_problem
+
 ## Lab 5
 
 ### Links:
