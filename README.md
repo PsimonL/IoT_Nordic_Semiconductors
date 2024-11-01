@@ -6,6 +6,8 @@
 3. Nordic Semicondutor software and tools ecosystem
 
 
-https://github.com/NordicDeveloperAcademy/ncs-fund
+- Folder "ncs-fund" is coppied from: https://github.com/NordicDeveloperAcademy/ncs-fund
 
-https://github.com/NordicDeveloperAcademy/ncs-inter
+- Folder "ncs-inter" is coppied from: https://github.com/NordicDeveloperAcademy/ncs-inter
+
+- Folder "packer" is coppied from: https://github.com/wbober/iot/tree/master/packet
