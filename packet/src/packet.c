@@ -21,6 +21,15 @@ LOG_MODULE_REGISTER(net_pkt_sock_sample, LOG_LEVEL_DBG);
 #include <zephyr/net/ieee802154_mgmt.h>
 #include <zephyr/net/net_mgmt.h>
 
+// ###################################################################################################################################### 
+// TASK 4
+#include <zephyr/drivers/gpio.h>
+#define BUTTON_PIN 13
+static const struct device *button_device;
+static struct gpio_callback button_cb_data;
+// ###################################################################################################################################### 
+
+
 #define STACK_SIZE 4096
 #if defined(CONFIG_NET_TC_THREAD_COOPERATIVE)
 #define THREAD_PRIORITY K_PRIO_COOP(CONFIG_NUM_COOP_PRIORITIES - 1)
@@ -43,6 +52,10 @@ struct packet_data {
 static struct packet_data packet;
 static bool finish;
 static K_SEM_DEFINE(iface_up, 0, 1);
+// ###################################################################################################################################### 
+// TASK 5
+static int button_press_count = 0;
+// ###################################################################################################################################### 
 static char buffer[RECV_BUFFER_SIZE] = "This is sample data";
 static const struct device *bme280 = NULL;
 
@@ -56,6 +69,16 @@ K_THREAD_DEFINE(sender_thread_id, STACK_SIZE,
 		send_packet, NULL, NULL, NULL,
 		THREAD_PRIORITY, 0, -1);
 
+// ###################################################################################################################################### 
+// TASK 4
+void button_callback(const struct device *dev, struct gpio_callback *cb, uint32_t pins) {
+	// ###################################################################################################################################### 
+	// TASK 5
+	button_press_count++;
+	// ###################################################################################################################################### 
+    send_data = true;
+}
+// ###################################################################################################################################### 
 
 static const struct device *get_bme280_device(void)
 {
@@ -232,6 +255,12 @@ static int send_packet_socket(struct packet_data *packet)
 	dst.sll_ifindex = net_if_get_by_iface(iface);
 
 	if (IS_ENABLED(CONFIG_NET_SAMPLE_ENABLE_PACKET_DGRAM)) {
+		// ######################################################################################################################################
+		// TASK 6 
+		// uint16_t unicast_address = 0x5678; 
+		// ret = sll_addr_from_str(&dst, net_if_l2(iface), ""); // Wprowadź adres MAC
+		// ######################################################################################################################################
+	
 		ret = sll_addr_from_str(&dst, net_if_l2(iface), CONFIG_NET_SAMPLE_DESTINATION_ADDR);
 		if (ret < 0) {
 			LOG_ERR("Failed to set destination address");
@@ -248,6 +277,12 @@ static int send_packet_socket(struct packet_data *packet)
 				return -1;
 			}
 		}
+		// ######################################################################################################################################
+		// TASK 5 
+		else {
+    		snprintf(buffer, sizeof(buffer), "Button press count: %d", button_press_count);
+		}
+		// ######################################################################################################################################
 
 		ret = sendto(packet->send_sock, buffer, len, 0,
 			     	 (const struct sockaddr *)&dst,
@@ -285,6 +320,16 @@ static void send_packet(void)
 		return;
 	}
 
+
+	// ######################################################################################################################################
+	// TASK 7 
+	struct net_if *iface = net_if_get_default(); 
+    ret = net_mgmt(NET_REQUEST_IEEE802154_SET_ACK, iface, NULL, 0);
+    if (ret) {
+        NET_ERR("*** Failed to set ack request addr\n");
+    }
+    // ######################################################################################################################################
+	
 	while (ret == 0) {
 		ret = send_packet_socket(&packet);
 		if (ret < 0) {
@@ -333,13 +378,18 @@ static void wait_for_interface(void)
 	}
 
 	short_addr = ((uint16_t)ext_addr[6]) << 8 | ext_addr[7];
-
-	ret = net_mgmt(NET_REQUEST_IEEE802154_SET_SHORT_ADDR, iface,
-				   &short_addr, sizeof(short_addr));
+	
+	// ###################################################################################################################################### 
+	// TASK 1 - Wireshark config based on documentation
+	// TASK 2
+	// short_addr = ((uint16_t)ext_addr[6]) << 8 | ext_addr[7];
+	uint16_t short_addr = 0x1234;
+	ret = net_mgmt(NET_REQUEST_IEEE802154_SET_SHORT_ADDR, iface, &short_addr, sizeof(short_addr));
 	if (ret) {
-		NET_ERR("*** Failed to set short addr\n");
+		NET_ERR("*** Failed to set short address\n");
 	}
-
+	// ###################################################################################################################################### 
+	
 	// ret = net_mgmt(NET_REQUEST_IEEE802154_SET_ACK, iface, NULL, 0);
 	// if (ret) {
 	// 	NET_ERR("*** Failed to set ack request addr\n");
@@ -370,6 +420,18 @@ int main(void)
 	wait_for_interface();
 
 	LOG_INF("Packet socket sample is running");
+
+	// ###################################################################################################################################### 
+	// TASK 4
+	button_device = device_get_binding("GPIO_0");
+	if (button_device == NULL) {
+		LOG_ERR("Failed to get binding for GPIO_0");
+		return -1;
+	}
+	gpio_pin_configure(button_device, BUTTON_PIN, GPIO_INPUT | GPIO_INT_DEBOUNCE | GPIO_INT_EDGE_TO_ACTIVE);
+	gpio_init_callback(&button_cb_data, button_callback, BIT(BUTTON_PIN));
+	gpio_add_callback(button_device, &button_cb_data);
+	// ###################################################################################################################################### 
 
 	k_thread_start(receiver_thread_id);
 	k_thread_start(sender_thread_id);
