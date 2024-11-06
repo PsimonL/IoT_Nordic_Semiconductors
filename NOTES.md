@@ -167,9 +167,64 @@ Comparison table:
 - https://en.wikipedia.org/wiki/Hidden_node_problem
 
 ## Lab 5
-Done
+
+### Thread protocol
+
+### Thread's primary features
+- IEEE 802.15.4
+- IPv6 and 6LoWPAN
+- UDP and CoAP
+- commisioning and security are part of specification
+- no app layer defines
+
+### Thread devise roles
+- Router (Parent) - max 32 routers
+- End device (Child)
+
+### Thread's primary features:
+#### efficiency - low-power, sleepy end device (SED), synchronized sleepy end device (SSED)
+#### reliability - contrary to 802.15.4 we've got routing possibilites: data retransmissions, self-healing mesh, self-configuring leaders, multiple border routers.  
+
+Thread Routing
+- distance vector routing
+- Link Quality between two nodes based on RSSI
+- Route cost is min sum of one hop link qialities on a path
+- Routers advertise periodically their routing costs to all other Routers in Thread Netwoeks
+- Max numer of active routers is limited to 32, to prevent large routing tables
+
+#### IP-based, point of convergence for the IoT industry
+Thread devices integrate with larger IP networks.  
+Developers can use same toolset for the Internet.  
+
+#### IPv6 Address Schema
+Simple overview
+
+#### Thread Addressing (MAC)
+
+#### Thread Addressing (IPv6)
+- Mesh Local Prefix
+- LLA
+- Mesh Local
+- RLOC
+- Multicast
+
+#### Threat Packet Forwarding
+- unicast -  
+- multicast - 
 
 
+#### How is Thread Network being created?
+- using MLE protocol, every device connects to network as end device
+1. MLE Parent Request
+2. Routers (and REEDs) in range may response with MLE Parent Response.
+3. If not ...
+
+
+#### Thread Security
+
+#### Thread Commissioning: 
+1. (steps)
+2. 
 
 ### Links
 
