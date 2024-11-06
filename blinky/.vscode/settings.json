@@ -1,0 +1,4 @@
+{
+    "sonarlint.pathToCompileCommands": "${workspaceFolder}/build\\compile_commands.json",
+    "WhiteSource Advise.Diff.BaseBranch": "main"
+}
