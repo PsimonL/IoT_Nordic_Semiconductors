@@ -20,4 +20,6 @@ Below repositories were not created by me, I forked them into one. I've used and
 
 ## Links: 
 - https://infocenter.nordicsemi.com/topic/ug_sniffer_802154/UG/sniffer_802154/installing_sniffer_802154.html
-
+- https://docs.nordicsemi.com/bundle/ug_sniffer_802154/page/UG/sniffer_802154/intro_802154.html
+- https://academy.nordicsemi.com/courses/nrf-connect-sdk-fundamentals
+- https://academy.nordicsemi.com/courses/nrf-connect-sdk-intermediate
