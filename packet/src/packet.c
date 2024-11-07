@@ -43,7 +43,7 @@ struct packet_data {
 static struct packet_data packet;
 static bool finish;
 static K_SEM_DEFINE(iface_up, 0, 1);
-static char buffer[RECV_BUFFER_SIZE] = "Hello There!";
+static char buffer[RECV_BUFFER_SIZE] = "To jest poprawna wiadomosc";
 static const struct device *bme280 = NULL;
 
 static void recv_packet(void);
@@ -333,8 +333,8 @@ static void wait_for_interface(void)
 	}
 
 	// short_addr = ((uint16_t)ext_addr[6]) << 8 | ext_addr[7];
+	short_addr = 0xa0b0;
 
-	short_addr = 0x0101;
 	ret = net_mgmt(NET_REQUEST_IEEE802154_SET_SHORT_ADDR, iface,
 				   &short_addr, sizeof(short_addr));
 	if (ret) {
@@ -393,3 +393,6 @@ int main(void)
 	}
 	return 0;
 }
+
+
+// TODO: Finish functionality: send packet on button click.
