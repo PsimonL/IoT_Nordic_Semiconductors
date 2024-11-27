@@ -232,3 +232,7 @@ Simple overview
 
 ### Links:
 
+## Lab 7
+
+## Lab 8
+### Introduction to IoT - Matter
